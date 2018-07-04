@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour 
 {
+	[Header("360 Scene")]
 	public SpriteRenderer iconSpriteRenderer;
 	public Animator swordLoreAnim;
+	public Camera Camera360;
+
+	[Header("GalaxyMap")]
+	public List<SpriteRenderer> MapSprites;
+
+	[SerializeField]
+	private bool AlphaisRuning;
+
+
 	
 	void Update () 
 	{
@@ -26,11 +36,22 @@ public class PlayerInput : MonoBehaviour
 			}
 			else if (hit.collider.name == "Exit")
 			{
-				Debug.Log("HERE");
 				if(Input.GetMouseButton(0))
 				{
 					swordLoreAnim.SetBool("OUT",true);
 					swordLoreAnim.SetBool("IN",false);
+				}
+			}
+			else if (hit.collider.name == "Select")
+			{
+				if(Input.GetMouseButton(0))
+				{
+					if(!AlphaisRuning)
+					{
+						StartCoroutine(ApalhaDecrease());
+					}
+					Camera360.GetComponent<Animator>().enabled = false;
+					
 				}
 			}
 			else
@@ -43,5 +64,24 @@ public class PlayerInput : MonoBehaviour
 			iconSpriteRenderer.enabled = false;
 		}
 		Debug.DrawRay(ray.origin,ray.direction * 500f,Color.red);	
+	}
+	private IEnumerator ApalhaDecrease()
+	{
+		Color WAlpha = Color.white;
+		while(WAlpha.a >= 0)
+		{
+			AlphaisRuning = true;
+			yield return new WaitForSeconds(0.008f);						
+			{
+				foreach(SpriteRenderer srend in MapSprites)
+				{
+					srend.color = WAlpha;
+				}
+				WAlpha.a -= 0.002f;
+				Debug.Log("A:" + WAlpha.a);
+			}
+		}
+		AlphaisRuning = false;		
+		Camera360.GetComponent<FPSCamera>().enabled = true;
 	}
 }

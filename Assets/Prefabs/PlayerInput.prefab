@@ -53,3 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconSpriteRenderer: {fileID: 0}
   swordLoreAnim: {fileID: 0}
+  Camera360: {fileID: 0}
+  MapSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
