@@ -77,7 +77,7 @@ public class PlayerInput : MonoBehaviour
 				{
 					srend.color = WAlpha;
 				}
-				WAlpha.a -= 0.002f;
+				WAlpha.a -= 0.008f;
 				Debug.Log("A:" + WAlpha.a);
 			}
 		}
