@@ -162,8 +162,9 @@ public class GvrPointerPhysicsRaycaster : GvrBasePointerRaycaster {
       };
 
       resultAppendList.Add(result);
+      Debug.Log("Hit some shit hommie: " + result.gameObject.name);
     }
-
+   
     return true;
   }
 

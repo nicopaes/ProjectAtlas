@@ -39,8 +39,16 @@ public class BaseTarget : MonoBehaviour, ITarget
 	
 	public void GazedAtAction(bool gazedAt)
 	{
-		if(gazedAt && !ExecutedAction)  GetComponent<MeshRenderer>().material.color = Color.red;
-		else if (!ExecutedAction) GetComponent<MeshRenderer>().material.color = Color.white;
+		if(gazedAt && !ExecutedAction)  
+		{
+			_gazedAt = true;
+			GetComponent<MeshRenderer>().material.color = Color.red;
+		}
+		else if (!gazedAt && !ExecutedAction) 
+		{
+			_gazedAt = false;
+			GetComponent<MeshRenderer>().material.color = Color.white;
+		}
 	}
     public void Action()
     {
@@ -57,6 +65,6 @@ public class BaseTarget : MonoBehaviour, ITarget
     }
 	void Update()
 	{		
-		GazedAtAction(_gazedAt);
+		//GazedAtAction(_gazedAt);
 	}
 }
