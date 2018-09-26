@@ -1,70 +1,57 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInput : MonoBehaviour 
 {
-	[Header("360 Scene")]
-	public SpriteRenderer iconSpriteRenderer;
-	public Animator swordLoreAnim;
-	public Camera Camera360;
 
-	[Header("GalaxyMap")]
-	public List<SpriteRenderer> MapSprites;
-
-	[SerializeField]
+	
 	private bool AlphaisRuning;
 
+	public Text RaycastDebugText;
+
+	[SerializeField]
+	private ITarget Target;
 
 	
 	void Update () 
 	{
-		
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Debug.Log(Target);
+		Ray ray = new Ray(transform.position,transform.forward);  //Camera.main.ScreenPointToRay(Input.mousePosition); // IF PC
 		RaycastHit hit;
+		//Debug.DrawRay(transform.position,transform.forward,Color.green,0.01f);
 		if(Physics.Raycast(ray.origin,ray.direction,out hit,Mathf.Infinity))
 		{
-			if(hit.collider.name == "Sword")
+			RaycastDebugText.text = "RAYCAST: TRUE";
+			if(hit.collider.GetComponent<ITarget>() != null)
 			{
-				iconSpriteRenderer.enabled = true;
-				if(Input.GetMouseButton(0))
+				Target = hit.collider.GetComponent<ITarget>();
+				if(Target.GazedAt == false) Target.SetGazedAt(true);
+				if(Input.touchCount > 0)
 				{
-					//swordLoreRenderer.enabled = true;
-					swordLoreAnim.SetBool("IN",true);
+					Target.Action();
 				}
-				
-			}
-			else if (hit.collider.name == "Exit")
-			{
-				if(Input.GetMouseButton(0))
+				#if UNITY_EDITOR
+				if(Input.GetMouseButtonDown(0))
 				{
-					swordLoreAnim.SetBool("OUT",true);
-					swordLoreAnim.SetBool("IN",false);
+					Debug.Log("Oh hi there");
+					Target.Action();
 				}
+				#endif // UNITY EDITOR
 			}
-			else if (hit.collider.name == "Select")
-			{
-				if(Input.GetMouseButton(0))
-				{
-					if(!AlphaisRuning)
-					{
-						StartCoroutine(ApalhaDecrease());
-					}
-					Camera360.GetComponent<Animator>().enabled = false;
-					
-				}
-			}
-			else
-			{
-				iconSpriteRenderer.enabled = false;
-			}			
 		}
-		else
+		else 
 		{
-			iconSpriteRenderer.enabled = false;
+			if(Target != null) 
+			{
+				Target.SetGazedAt(false);
+			}
+			RaycastDebugText.text = "RAYCAST: FALSE";
 		}
 		Debug.DrawRay(ray.origin,ray.direction * 500f,Color.red);	
 	}
+	/*
 	private IEnumerator ApalhaDecrease()
 	{
 		Color WAlpha = Color.white;
@@ -83,5 +70,5 @@ public class PlayerInput : MonoBehaviour
 		}
 		AlphaisRuning = false;		
 		Camera360.GetComponent<FPSCamera>().enabled = true;
-	}
+	}*/
 }
