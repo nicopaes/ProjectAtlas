@@ -7,6 +7,8 @@ public class ChangeSceneTarget : MonoBehaviour, ITarget {
 	public Material newSkybox;
     public GameObject nextPortal;
     public ParticleSystem portalParticleSystem;
+
+    public List<GameObject> ObjectsToTurnOnOff =  new List<GameObject>();
     [SerializeField]
     private float _chargeActionCounter;
     private bool _gazedAt = false;
@@ -54,8 +56,8 @@ public class ChangeSceneTarget : MonoBehaviour, ITarget {
         }           
 
         
-        ParticleSystem.EmissionModule e = portalParticleSystem.emission;
-        e.rateOverTime = _chargeActionCounter;
+        // ParticleSystem.EmissionModule e = portalParticleSystem.emission;
+        // e.rateOverTime = _chargeActionCounter;
     }
 
     public void SetGazedAt(bool newGazed)
@@ -76,10 +78,10 @@ public class ChangeSceneTarget : MonoBehaviour, ITarget {
             ExecutedAction = true;
             nextPortal.SetActive(true);   
 
-            portalParticleSystem.Stop();            
+            //portalParticleSystem.Stop();            
             _chargeActionCounter = 0;
-            ParticleSystem.EmissionModule e = portalParticleSystem.emission;            
-            e.rateOverTime = _chargeActionCounter;
+            //ParticleSystem.EmissionModule e = portalParticleSystem.emission;            
+            //e.rateOverTime = _chargeActionCounter;
             GazedAt = false;
             this.gameObject.SetActive(false);
         }
