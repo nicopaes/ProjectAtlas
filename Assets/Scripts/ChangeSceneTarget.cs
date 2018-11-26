@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class ChangeSceneTarget : MonoBehaviour, ITarget {
 
-	public Material newSkybox;
-    public GameObject nextPortal;
-    public ParticleSystem portalParticleSystem;
+    public FadeChangeScene FadeScript;
+    [Header("NEW SCENE NAME")]
+    public string nextSceneName;
 
-    public List<GameObject> ObjectsToTurnOnOff =  new List<GameObject>();
+	//public Material newSkybox;
+    //public GameObject nextPortal;
+    //public ParticleSystem portalParticleSystem;
+
+    //public List<GameObject> ObjectsToTurnOnOff =  new List<GameObject>();
+    [Header("PRIVATE")]
     [SerializeField]
     private float _chargeActionCounter;
     private bool _gazedAt = false;
@@ -72,21 +77,23 @@ public class ChangeSceneTarget : MonoBehaviour, ITarget {
     
     public void Action()
 	{
+        _chargeActionCounter = 0;            
+        GazedAt = false;
+
+        FadeScript.ChangeNextScene(nextSceneName);
+
+        /*
         if(RenderSettings.skybox != newSkybox)
         {        
         	RenderSettings.skybox = newSkybox;
             ExecutedAction = true;
-            nextPortal.SetActive(true);   
+            nextPortal.SetActive(true);    
 
-            //portalParticleSystem.Stop();            
-            _chargeActionCounter = 0;
-            //ParticleSystem.EmissionModule e = portalParticleSystem.emission;            
-            //e.rateOverTime = _chargeActionCounter;
-            GazedAt = false;
+           
             this.gameObject.SetActive(false);
         }
+        */
 	}
-
     // IEnumerator NoClickAction(float delaySeconds)
     // {   
     //     yield return new WaitForSeconds(delaySeconds);
