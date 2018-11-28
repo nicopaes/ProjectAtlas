@@ -296,7 +296,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 101656929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.09, y: 0.87, z: 7.43}
+  m_LocalPosition: {x: 1.27, y: 0.68, z: 7.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1156325184}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 140879521}
   - component: {fileID: 140879519}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CHANGE_SCENE_CANVAS <
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7350,7 +7350,7 @@ GameObject:
   - component: {fileID: 1521141409}
   - component: {fileID: 1521141408}
   m_Layer: 5
-  m_Name: BLACK FADE
+  m_Name: BLACK FADE <<<
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7423,10 +7423,12 @@ MonoBehaviour:
   AllScenes:
   - Name: oracle
     Skybox: {fileID: 2100000, guid: d0010f84434baed4fa648031604bcf8d, type: 2}
-    Portal: {fileID: 449736412}
+    Portals:
+    - {fileID: 449736412}
   - Name: void
     Skybox: {fileID: 2100000, guid: d15e30615fb71e14ebf0eab94475b8d8, type: 2}
-    Portal: {fileID: 101656929}
+    Portals:
+    - {fileID: 101656929}
 --- !u!95 &1521141409
 Animator:
   serializedVersion: 3

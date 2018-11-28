@@ -24,12 +24,18 @@ public class FadeChangeScene : MonoBehaviour
 				if(RenderSettings.skybox != scene.Skybox)
 				{        
 					RenderSettings.skybox = scene.Skybox;
-					scene.Portal.SetActive(true);   
+					foreach(GameObject portal in scene.Portals)
+					{
+						portal.SetActive(true);   
+					}
 				}
 			}
 			else
 			{
-				scene.Portal.SetActive(false);
+				foreach(GameObject portal in scene.Portals)
+				{
+					portal.SetActive(false);   
+				}
 			}
 		}		
 	}
@@ -46,6 +52,6 @@ public class FadeChangeScene : MonoBehaviour
     {
         public String Name;
         public Material Skybox;
-        public GameObject Portal;
+        public List<GameObject> Portals;
     }
 }
