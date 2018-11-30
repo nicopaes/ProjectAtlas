@@ -7,6 +7,8 @@ public class ChangeSceneTarget : MonoBehaviour, ITarget {
     public FadeChangeScene FadeScript;
     [Header("NEW SCENE NAME")]
     public string nextSceneName;
+    [Space]
+    public TextMesh textMesh;
 
 	//public Material newSkybox;
     //public GameObject nextPortal;
@@ -19,6 +21,10 @@ public class ChangeSceneTarget : MonoBehaviour, ITarget {
     private bool _gazedAt = false;
     private bool _executedAction = false;
 
+    public void OnEnable()
+    {
+        if(textMesh != null) textMesh.text = nextSceneName;
+    }
 	public bool GazedAt
 	{
 		get
