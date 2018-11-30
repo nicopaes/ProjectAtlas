@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeScript: {fileID: 1521141408}
-  nextSceneName: oracle
+  nextSceneName: The Oracle
   _chargeActionCounter: 0
 --- !u!135 &101656933
 SphereCollider:
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeScript: {fileID: 1521141408}
-  nextSceneName: void
+  nextSceneName: The Void
   _chargeActionCounter: 0
 --- !u!135 &449736415
 SphereCollider:
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeScript: {fileID: 1521141408}
-  nextSceneName: abstract-chamber
+  nextSceneName: Abstract Chamber
   _chargeActionCounter: 0
 --- !u!135 &939846434
 SphereCollider:
@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeScript: {fileID: 1521141408}
-  nextSceneName: oracle
+  nextSceneName: The Oracle
   _chargeActionCounter: 0
 --- !u!135 &1137027630
 SphereCollider:
@@ -1790,16 +1790,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NextSceneText: {fileID: 1900961455}
   AllScenes:
-  - Name: oracle
+  - Name: The Oracle
     Skybox: {fileID: 2100000, guid: d0010f84434baed4fa648031604bcf8d, type: 2}
     Portals:
     - {fileID: 449736412}
     - {fileID: 939846430}
-  - Name: void
+  - Name: The Void
     Skybox: {fileID: 2100000, guid: d15e30615fb71e14ebf0eab94475b8d8, type: 2}
     Portals:
     - {fileID: 101656929}
-  - Name: abstract-chamber
+  - Name: Abstract Chamber
     Skybox: {fileID: 2100000, guid: 5938252f1b0e2ee46bb917cc798e01a8, type: 2}
     Portals:
     - {fileID: 1137027626}
@@ -1876,8 +1876,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4eedafad5084240419e649245c7b2093, type: 3}
-    m_FontSize: 120
+    m_Font: {fileID: 12800000, guid: 183fe0e890c099544b38c09e5d8b2162, type: 3}
+    m_FontSize: 50
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
