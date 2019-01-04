@@ -13,9 +13,20 @@ public class FadeChangeScene : MonoBehaviour
 	public List<SceneStruct> AllScenes;
 	private String _nextScene;
 
-	public void ChangeScene()
+    private bool FadeWorking = false;
+
+    public void FadeWorkingTrue()
+    {
+        FadeWorking = true;
+    }
+
+    public void FadeWorkingFalse()
+    {
+        FadeWorking = false;
+    }
+
+    public void ChangeScene()
 	{
-		Debug.Log(_nextScene);
 		foreach (SceneStruct scene in AllScenes)
 		{
 			Debug.Log(scene + "--" + _nextScene);
@@ -42,10 +53,14 @@ public class FadeChangeScene : MonoBehaviour
 
 	public void ChangeNextScene(string nextScene)
 	{
-		_nextScene = nextScene;
-		NextSceneText.text = _nextScene;
-		GetComponent<Animator>().SetTrigger("Fade");
+        if (FadeWorking == false)
+        {
+            _nextScene = nextScene;
+            NextSceneText.text = _nextScene;
+            GetComponent<Animator>().SetTrigger("Fade");
+        }
 	}
+
 
     [System.Serializable]
     public struct SceneStruct 
