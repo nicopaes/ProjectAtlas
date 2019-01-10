@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChangeSceneTarget : MonoBehaviour, ITarget
 {
@@ -10,6 +11,7 @@ public class ChangeSceneTarget : MonoBehaviour, ITarget
     public string nextSceneName;
     [Space]
     public TextMesh textMesh;
+    public Image RadialVisual;
 
     //public Material newSkybox;
     //public GameObject nextPortal;
@@ -25,6 +27,7 @@ public class ChangeSceneTarget : MonoBehaviour, ITarget
     public void OnEnable()
     {
         if (textMesh != null) textMesh.text = nextSceneName;
+        RadialVisual = GameObject.Find("RadialVisual").GetComponent<Image>();
     }
     public bool GazedAt
     {
@@ -56,9 +59,11 @@ public class ChangeSceneTarget : MonoBehaviour, ITarget
         {
             _chargeActionCounter += 0.3f;
             Mathf.Clamp(_chargeActionCounter, 0, 100);
+            RadialVisual.fillAmount = Mathf.Clamp(_chargeActionCounter/100,0,1);
             if (_chargeActionCounter >= 100 && !ExecutedAction)
             {
                 Action();
+                RadialVisual.fillAmount = 0;
             }
         }
 
@@ -75,6 +80,10 @@ public class ChangeSceneTarget : MonoBehaviour, ITarget
     public void SetGazedAt(bool newGazed)
     {
         _gazedAt = newGazed;
+        if(!newGazed)
+        {
+            RadialVisual.fillAmount = 0;
+        }
     }
 
     public void GazedAtAction(bool gazedAt)

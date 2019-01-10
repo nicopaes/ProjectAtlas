@@ -29,7 +29,7 @@ public class FadeChangeScene : MonoBehaviour
 	{
 		foreach (SceneStruct scene in AllScenes)
 		{
-			Debug.Log(scene + "--" + _nextScene);
+			Debug.Log(scene.Name + "--" + _nextScene);
 			if(Equals(_nextScene,scene.Name))
 			{
 				if(RenderSettings.skybox != scene.Skybox)
